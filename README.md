@@ -12,7 +12,7 @@ npm install
 npm run dev
 ```
 
-## 🚀 Setup
+## 🚀 Build
 ```bash
 npm run build
 npm run preview
