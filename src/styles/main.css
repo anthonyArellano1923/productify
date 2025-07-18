@@ -1,191 +1,168 @@
+/* ----------------- Base & Variables ----------------- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
-:root {
-  --navColor:rgba(0,0,0,.85);
-  --shoppingColor: rgb(0, 124, 119);
-  --actionButton: rgb(16, 152, 247);
+
+:root{
+  --navColor: rgba(0,0,0,.85);
+  --shoppingColor: #007c77;   /* botón principal */
+  --actionButton: #1098f7;    /* botón secundario */
   --fontSmall: 1.4rem;
   --fontMedium: 1.6rem;
   --fontLarge: 1.8rem;
 }
 
-*{
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+body{
+  font-size:62.5%;                  /* 1 rem = 10 px */
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
-/* Para trabajar usando rem + fuente a usar.*/
+/* ----------------- Layout ----------------- */
+header,main{ width:100%; }
 
-body {
-  font-size: 62.5%;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-/* -------------- Hero ---------------- */
-
-header, main {
-  width: 100%;
+/* efecto glass opcional sobre la barra */
+header{
+  background:rgba(0,0,0,.75);
+  backdrop-filter:blur(4px);
 }
 
-header {
-    background: var(--navColor);
-
+/* ----------------- Navbar ----------------- */
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:.8rem 1rem;
+  color:#fff;
+  position:relative;
+  z-index:1200;                     /* sobre el overlay */
+  max-width:100%;
 }
 
-/* ---------- Nav ---------- */
-.nav {
-  margin: auto;
-  display: flex;                 /* alinea logo y botón en la misma fila */
-  align-items: center;           /* centra verticalmente */
-  justify-content: space-between;/* logo a la izq., botón a la der. */
-  padding: .8rem 1rem;           /* aire */
-  color: #fff;                   /* hará blanco el trazo del SVG */
-  /* Mantiene la barra de navegación por encima del panel móvil */
-  position: relative;     /* crea un nuevo contexto de apilamiento */
-  z-index: 1200;          /* más alto que el overlay del menú */
-}
-
-/* Logo – tamaño responsivo */
+/* Logo responsivo */
 .nav__logo{
-  width: 10rem;        /* aprox 100 px, cabe en pantallas 320 px */
-  height: auto;       /* mantiene proporción */
-  flex-shrink: 0;     /* evita que se encoja con flexbox */
+  width:8rem;       /* 80 px en mobile */
+  height:auto;
+  flex-shrink:0;
 }
 
-
-/* Botón */
-.nav__toggle {
-  background: none;
-  border: 0;
-  padding: .5rem;
-  cursor: pointer;
-  color: inherit;
-  /* El ícono hamburguesa permanece siempre clicable */
-  position: relative;     /* se apilará sobre el overlay */
-  z-index: 1201;          /* un nivel por encima de .nav */
+/* Botón hamburguesa */
+.nav__toggle{
+  background:none;
+  border:0;
+  padding:.5rem;
+  cursor:pointer;
+  color:inherit;
+  position:relative;
+  z-index:1201;                     /* clicable sobre overlay */
 }
-
-/* Overlay */
-.nav__menu {
-  /* max-width: 32rem; */
-  position: fixed;
-  inset: 0;                  /* full-screen */
-  /* Limita el ancho del panel y lo ancla al borde derecho */
-  width: 32rem;          
-  right: 0;              /* pegado al borde derecho */
-  left: auto;            /* cancela el 0 implícito que traía inset */
-  z-index: 1100;         /* debajo de .nav pero sobre el contenido */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0,0,0,.85);
-  transform: translateX(100%);   /* oculto off-canvas derecha */
-  transition: transform .3s ease;
-}
-
 .nav__icon{
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;      /* evita que se aplaste */
+  width:24px;
+  height:24px;
+  flex-shrink:0;
 }
 
-/* Lista */
-.nav__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: right;     /* acerca los links al pulgar diestro */
-  /* Alinea visualmente los enlaces al borde derecho */
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+/* Overlay lateral */
+.nav__menu{
+  position:fixed;
+  inset:0;                          /* ocupa toda la pantalla */
+  width:32rem;                      /* 320 px */
+  right:0;
+  left:auto;
+  z-index:1100;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,.85);
+  transform:translateX(100%);       /* fuera de vista */
+  transition:transform .3s ease;
 }
 
-.nav__link {
-  display: block;
-  padding: 1rem 2rem;
-  font-size: var(--fontMedium);
-  color: #fff;
-  text-decoration: none;
+/* Lista alineada a la derecha */
+.nav__list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  text-align:right;
 }
+.nav__item{ width:100%; }
+.nav__link{
+  display:block;
+  padding:1rem 2rem;
+  font-size:var(--fontMedium);
+  color:#fff;
+  text-decoration:none;
+}
+.nav__link:hover,
+.nav__link:focus-visible{ background:rgba(255,255,255,.1); }
 
 /* Estado abierto */
-.nav--open .nav__menu {
-  transform: translateX(0);
+.nav--open .nav__menu{ transform:translateX(0); }
+
+/* ----------------- Hero ----------------- */
+.hero{ padding:4rem 1rem 0; }
+
+/* Título */
+.hero__subtitle h1{
+  font-size:clamp(2.4rem,5vw,3.6rem);
+  font-weight:600;
+  line-height:1.2;
+  text-align:center;
+  margin:0 0 2rem;
 }
 
-/* ----------- Sección principal -----------*/
-
-/* ----------- Subtítulo de hero ----------- */
-
-.hero__subtitle {
-  height: 10rem;
-  padding: auto;
-  text-align: center;
-} 
-
-.hero__subtitle h1 {
-  padding: 4rem;
+/* CTA contenedor */
+.hero__CTA{
+  width:100%;
+  max-width:32rem;
+  margin:0 auto 3rem;
+  display:flex;
+  gap:1.2rem;
+  justify-content:center;
+  flex-wrap:wrap;
 }
 
-/* ----------- Call to action ----------- */
-
-.hero__CTA {
-  display: flex;
-  margin: auto;
-  width: 95%;
-  height: 10rem;
-  padding: 0.8rem;
-  background-color: var(--navColor);
-  border-radius: 0.88rem;
-  align-items: center;
-  justify-content: space-around;
-  gap: 0.5rem;
+/* Botones CTA */
+.hero__CTA-button{
+  padding:.8rem 2.4rem;
+  border-radius:.8rem;
+  background:var(--shoppingColor);
+  color:#fff;
+  font-size:var(--fontMedium);
+  text-decoration:none;
+  transition:transform .15s ease,box-shadow .15s;
+}
+.hero__CTA-button:hover,
+.hero__CTA-button:focus-visible{
+  transform:translateY(-2px);
+  box-shadow:0 4px 10px rgba(0,0,0,.25);
+  outline:none;
 }
 
-.hero__CTA a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  height: 4rem;
-  width: 10rem;
-  color: white;
-  font-size: var(--fontSmall);
-  background-color: var(--shoppingColor);
-  border-radius: 0.88rem;
-  text-align: center;
+/* Botón de ingreso */
+.hero__logIn{
+  display:inline-block;
+  padding:1rem 3rem;
+  margin:0 auto 4rem;
+  font-size:var(--fontMedium);
+  background:var(--actionButton);
+  border:none;
+  border-radius:.8rem;
+  color:#fff;
+  transition:background .2s ease;
+}
+.hero__logIn:hover,
+.hero__logIn:focus-visible{
+  background:#0c9bec;
+  cursor:pointer;
+  outline:none;
 }
 
-.hero__CTA a:hover {
-  cursor: pointer;
+/* ----------------- Media Query Desktop ----------------- */
+@media(min-width:930px){
+  .nav{ max-width:93rem; }
+  .nav__logo{ width:12rem; }        /* 120 px en desktop */
+  .hero{ padding:6rem 2rem 0; }
 }
-
-/* ----------- Inicio de sesión ----------- */
-
-.hero__logIn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 3rem auto 3rem;
-  height: 4rem;
-  width: 20rem;
-  font-size: var(--fontSmall);
-  background-color: var(--actionButton);
-  border-radius: 0.88rem;
-  border: none;
-  color: white;
-  
-
-
-}
-
-@media (min-width: 930px){
-  .nav__logo{
-    width: 12rem;     /* 120 px en desktop */
-  }
-
-  .nav {
-      max-width: 93rem; 
-  }
-}
-
