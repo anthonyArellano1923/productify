@@ -118,7 +118,7 @@ header {
 /* ----------- Subtítulo de hero ----------- */
 
 .hero__subtitle {
-  height: 10rem;
+  height: 7rem;
   padding: auto;
   text-align: center;
 } 
@@ -135,7 +135,6 @@ header {
   width: 95%;
   height: 10rem;
   padding: 0.8rem;
-  background-color: var(--navColor);
   border-radius: 0.88rem;
   align-items: center;
   justify-content: space-around;
