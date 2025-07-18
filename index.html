@@ -7,7 +7,54 @@
     <title>Vite App</title>
   </head>
   <body>
-    <div id="app"></div>
+    <header>
+      <nav class="nav">
+        <div class="hero__title">
+          <img src="/src/assets/logo.png" alt="page-logo" class="nav__logo">
+        </div>
+        <!-- Botón hamburguesa -->
+        <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">
+          <!-- SVG de 3 líneas, tamaño 24 px -->
+          <svg class="nav__icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <!-- Overlay menu -->
+        <div class="nav__menu" role="dialog" aria-modal="true">
+          <ul class="nav__list">
+            <li class="nav__item"><a class="nav__link" href="#account">Tu cuenta</a></li>
+            <li class="nav__item"><a class="nav__link" href="#cart">Carrito</a></li>
+            <li class="nav__item"><a class="nav__link" href="#offers">Ver ofertas</a></li>
+            <li class="nav__item"><a class="nav__link" href="#social">Redes sociales</a></li>
+            <li class="nav__item"><a class="nav__link" href="#contact">Contáctanos</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="hero__subtitle">
+              <h1>¡Donde comprar y vender de todo!</h1>
+      </div>
+
+      <div class="hero__CTA">
+        <a class="hero__CTA-button">
+          Compra
+        </a>
+        <a class="hero__CTA-button">
+          Vende
+        </a>
+      </div>
+      <button class="hero__logIn">
+        ¡Ingresa aquí!
+      </button>
+      <section id="offers">
+
+      </section>
+    </main>
+    <!-- <div id="app">
+    </div> -->
     <script type="module" src="/src/scripts/main.js"></script>
   </body>
 </html>
