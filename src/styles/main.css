@@ -1,24 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
 :root {
-  --navColor:rgba(0,0,0,.85);
-  --shoppingColor: rgb(0, 124, 119);
-  --actionButton: rgb(16, 152, 247);
-  --fontSmall: 1.4rem;
-  --fontMedium: 1.6rem;
-  --fontLarge: 1.8rem;
+  --navColor: #380ce9;
+  --shoppingColor: #08b2e3;
+  --actionButton: #f17300;
+  --fontSmall: 1.2rem;
+  --fontMedium: 1.4rem;
+  --fontLarge: 1.6rem;
+  --fontLightWeight: 400;
+  --fontBoldWeight: 600;
 }
 
 *{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+
 }
 
 /* Para trabajar usando rem + fuente a usar.*/
 
 body {
   font-size: 62.5%;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 /* -------------- Hero ---------------- */
 
@@ -34,19 +38,29 @@ header {
 /* ---------- Nav ---------- */
 .nav {
   margin: auto;
+  height: 4rem;
   display: flex;                 /* alinea logo y botón en la misma fila */
   align-items: center;           /* centra verticalmente */
-  justify-content: space-between;/* logo a la izq., botón a la der. */
+  justify-content:space-around ;/* logo a la izq., botón a la der. */
   padding: .8rem 1rem;           /* aire */
   color: #fff;                   /* hará blanco el trazo del SVG */
   /* Mantiene la barra de navegación por encima del panel móvil */
   position: relative;     /* crea un nuevo contexto de apilamiento */
   z-index: 1200;          /* más alto que el overlay del menú */
+  font-weight: var(--fontBoldWeight);
+  font-size: var(--fontSmall);
+}
+
+/* Nav Title */
+
+.nav h1 {
+  font-size: 2.4rem;
+  line-height: 1.2;
 }
 
 /* Logo – tamaño responsivo */
 .nav__logo{
-  width: 10rem;        /* aprox 100 px, cabe en pantallas 320 px */
+  width: 5rem;        /* aprox 100 px, cabe en pantallas 320 px */
   height: auto;       /* mantiene proporción */
   flex-shrink: 0;     /* evita que se encoja con flexbox */
 }
@@ -120,17 +134,41 @@ header {
 .hero__subtitle {
   height: 7rem;
   padding: auto;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  height: auto;
 } 
 
 .hero__subtitle h1 {
-  padding: 4rem;
+  padding: 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content:center ;
+  font-size: 2.5rem;
+  color: var(--navColor);
 }
+
+.small {
+  display: block;
+}
+
+.hero__subtitle-image {
+  width: 40%;
+  padding: 1rem;
+  
+}
+ .hero__subtitle-image img {
+  width: 100%;
+  border-radius: 1.74rem;
+ }
+
 
 /* ----------- Call to action ----------- */
 
 .hero__CTA {
   display: flex;
+  flex-direction: column;
   margin: auto;
   width: 95%;
   height: 10rem;
@@ -141,17 +179,23 @@ header {
   gap: 0.5rem;
 }
 
+.hero__CTA-shoopingButtons {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+
 .hero__CTA a {
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  height: 4rem;
-  width: 10rem;
-  color: white;
+  min-height: 4.4rem;
+  width: 50%;
+  color: black;
   font-size: var(--fontSmall);
-  background-color: var(--shoppingColor);
   border-radius: 0.88rem;
+  border: black solid 0.05rem;
   text-align: center;
 }
 
@@ -161,21 +205,25 @@ header {
 
 /* ----------- Inicio de sesión ----------- */
 
-.hero__logIn {
+.hero__CTA-login {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 3rem auto 3rem;
-  height: 4rem;
-  width: 20rem;
-  font-size: var(--fontSmall);
-  background-color: var(--actionButton);
-  border-radius: 0.88rem;
-  border: none;
+  flex-direction: column;
+  padding-top: 0.8rem;
+  width: 100%;
+}
+
+.hero__CTA-login p {
+  text-align: center;
+  font-size: var(--fontMedium);
+  padding-bottom: 0.8rem;
+}
+
+.hero__CTA-login a {
+  width: 100%;
+  min-height: 4.4rem;
   color: white;
-  
-
-
+  background-color: var(--shoppingColor);
+  border: none;
 }
 
 @media (min-width: 930px){
