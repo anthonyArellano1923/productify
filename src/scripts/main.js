@@ -1,4 +1,4 @@
-// import '@/styles/main.css';
+import '@/styles/main.css';
 
 const navToggle = document.querySelector('.nav__toggle');
 const nav = document.querySelector('.nav');
