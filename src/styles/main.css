@@ -23,6 +23,7 @@
 body {
   font-size: 62.5%;
   font-family: 'Poppins', sans-serif;
+  overflow: hidden;
 }
 /* -------------- Hero ---------------- */
 
@@ -140,7 +141,7 @@ header {
   height: auto;
 } 
 
-.hero__subtitle h1 {
+.hero__subtitle h2 {
   padding: 1rem 1rem 1rem;
   display: flex;
   flex-direction: column;
@@ -156,11 +157,13 @@ header {
 .hero__subtitle-image {
   width: 40%;
   padding: 1rem;
+  aspect-ratio: 4 / 3;
   
 }
  .hero__subtitle-image img {
   width: 100%;
   border-radius: 1.74rem;
+  object-fit: cover;
  }
 
 
@@ -234,5 +237,12 @@ header {
   .nav {
       max-width: 93rem; 
   }
+
+  .hero__subtitle{
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+  .hero__subtitle-image{ max-width: 40%; margin: 0;} 
 }
 
