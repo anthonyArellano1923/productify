@@ -1,96 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --navColor: #380ce9;
+  --shoppingColor: #08b2e3;
+  --actionButton: #f17300;
+  --fontSmall: 1.2rem;
+  --fontMedium: 1.4rem;
+  --fontLarge: 1.6rem;
+  --fontLightWeight: 400;
+  --fontBoldWeight: 600;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
 }
-a:hover {
-  color: #535bf2;
-}
+
+/* Para trabajar usando rem + fuente a usar.*/
 
 body {
-  margin: 0;
+  font-size: 62.5%;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+/* -------------- Hero ---------------- */
+
+header, main {
+  width: 100%;
+}
+
+header {
+    background: var(--navColor);
+
+}
+
+/* ---------- Nav ---------- */
+.nav {
+  margin: auto;
+  height: 4rem;
+  display: flex;                 /* alinea logo y botón en la misma fila */
+  align-items: center;           /* centra verticalmente */
+  justify-content:space-around ;/* logo a la izq., botón a la der. */
+  padding: .8rem 1rem;           /* aire */
+  color: #fff;                   /* hará blanco el trazo del SVG */
+  /* Mantiene la barra de navegación por encima del panel móvil */
+  position: relative;     /* crea un nuevo contexto de apilamiento */
+  z-index: 1200;          /* más alto que el overlay del menú */
+  font-weight: var(--fontBoldWeight);
+  font-size: var(--fontSmall);
+}
+
+/* Nav Title */
+
+.nav h1 {
+  font-size: 2.4rem;
+  line-height: 1.2;
+}
+
+/* Logo – tamaño responsivo */
+.nav__logo{
+  width: 5rem;        /* aprox 100 px, cabe en pantallas 320 px */
+  height: auto;       /* mantiene proporción */
+  flex-shrink: 0;     /* evita que se encoja con flexbox */
+}
+
+
+/* Botón */
+.nav__toggle {
+  background: none;
+  border: 0;
+  padding: .5rem;
+  cursor: pointer;
+  color: inherit;
+  /* El ícono hamburguesa permanece siempre clicable */
+  position: relative;     /* se apilará sobre el overlay */
+  z-index: 1201;          /* un nivel por encima de .nav */
+}
+
+/* Overlay */
+.nav__menu {
+  /* max-width: 32rem; */
+  position: fixed;
+  inset: 0;                  /* full-screen */
+  /* Limita el ancho del panel y lo ancla al borde derecho */
+  width: 32rem;          
+  right: 0;              /* pegado al borde derecho */
+  left: auto;            /* cancela el 0 implícito que traía inset */
+  z-index: 1100;         /* debajo de .nav pero sobre el contenido */
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,.85);
+  transform: translateX(100%);   /* oculto off-canvas derecha */
+  transition: transform .3s ease;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.nav__icon{
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;      /* evita que se aplaste */
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Lista */
+.nav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: right;     /* acerca los links al pulgar diestro */
+  /* Alinea visualmente los enlaces al borde derecho */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.nav__link {
+  display: block;
+  padding: 1rem 2rem;
+  font-size: var(--fontMedium);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Estado abierto */
+.nav--open .nav__menu {
+  transform: translateX(0);
+}
+
+/* ----------- Sección principal -----------*/
+
+/* ----------- Subtítulo de hero ----------- */
+
+.hero__subtitle {
+  height: 7rem;
+  padding: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  height: auto;
+} 
+
+.hero__subtitle h2 {
+  padding: 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content:center ;
+  font-size: 2.5rem;
+  color: var(--navColor);
+}
+
+.small {
+  display: block;
+}
+
+.hero__subtitle-image {
+  width: 40%;
+  padding: 1rem;
+  aspect-ratio: 4 / 3;
+  
+}
+ .hero__subtitle-image img {
+  width: 100%;
+  border-radius: 1.74rem;
+  object-fit: cover;
+ }
+
+
+/* ----------- Call to action ----------- */
+
+.hero__CTA {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 95%;
+  height: 10rem;
+  padding: 0.8rem;
+  border-radius: 0.88rem;
+  align-items: center;
+  justify-content: space-around;
+  gap: 0.5rem;
+}
+
+.hero__CTA-shoopingButtons {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+
+.hero__CTA a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  min-height: 4.4rem;
+  width: 50%;
+  color: black;
+  font-size: var(--fontSmall);
+  border-radius: 0.88rem;
+  border: black solid 0.05rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.hero__CTA a:hover {
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* ----------- Inicio de sesión ----------- */
+
+.hero__CTA-login {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.8rem;
+  width: 100%;
 }
+
+.hero__CTA-login p {
+  text-align: center;
+  font-size: var(--fontMedium);
+  padding-bottom: 0.8rem;
+}
+
+.hero__CTA-login a {
+  width: 100%;
+  min-height: 4.4rem;
+  color: white;
+  background-color: var(--shoppingColor);
+  border: none;
+}
+
+@media (min-width: 930px){
+  .nav__logo{
+    width: 12rem;     /* 120 px en desktop */
+  }
+
+  .nav {
+      max-width: 93rem; 
+  }
+
+  .hero__subtitle{
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+  .hero__subtitle-image{ max-width: 40%; margin: 0;} 
+}
+
