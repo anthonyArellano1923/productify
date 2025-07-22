@@ -4,9 +4,10 @@
   --navColor: #380ce9;
   --shoppingColor: #08b2e3;
   --actionButton: #f17300;
-  --fontSmall: 1.2rem;
-  --fontMedium: 1.4rem;
-  --fontLarge: 1.6rem;
+  --fontMicro: 1.2rem;
+  --fontSmall: 1.4rem;
+  --fontMedium: 1.6rem;
+  --fontLarge: 1.8rem;
   --fontLightWeight: 400;
   --fontBoldWeight: 600;
 }
@@ -60,8 +61,9 @@ header {
 /* Nav Title */
 
 .nav span {
-  font-size: 2.4rem;
+  font-size: clamp(2rem, 6vw, 2.8rem);
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 /* Logo – tamaño responsivo */
@@ -175,8 +177,11 @@ header {
 }
  .hero__subtitle-image img {
   width: 100%;
+  max-width: 33.2rem;
+  height: auto;
   border-radius: 1.74rem;
   object-fit: cover;
+
  }
 
 
@@ -267,7 +272,7 @@ header {
   display: flex;
   margin: auto;
   width: 90%;
-  gap: 1.5rem;
+  gap: 0.8rem;
   justify-content: center;
 }
 
@@ -295,6 +300,8 @@ header {
 
 .benefits__cards-card p {
   font-weight: 500;
+  line-height: 1rem;
+  font-size: 0.75rem;
 }
 
 @media (min-width: 930px){
