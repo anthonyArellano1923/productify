@@ -4,9 +4,10 @@
   --navColor: #380ce9;
   --shoppingColor: #08b2e3;
   --actionButton: #f17300;
-  --fontSmall: 1.2rem;
-  --fontMedium: 1.4rem;
-  --fontLarge: 1.6rem;
+  --fontMicro: 1.2rem;
+  --fontSmall: 1.4rem;
+  --fontMedium: 1.6rem;
+  --fontLarge: 1.8rem;
   --fontLightWeight: 400;
   --fontBoldWeight: 600;
 }
@@ -23,7 +24,6 @@
 body {
   font-size: 62.5%;
   font-family: 'Poppins', sans-serif;
-  overflow: hidden;
 }
 /* -------------- Hero ---------------- */
 
@@ -31,10 +31,16 @@ header, main {
   width: 100%;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+}
+
 header {
     background: var(--navColor);
-
 }
+
+
 
 /* ---------- Nav ---------- */
 .nav {
@@ -54,9 +60,10 @@ header {
 
 /* Nav Title */
 
-.nav h1 {
-  font-size: 2.4rem;
+.nav span {
+  font-size: clamp(2rem, 6vw, 2.8rem);
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 /* Logo – tamaño responsivo */
@@ -128,20 +135,28 @@ header {
   transform: translateX(0);
 }
 
-/* ----------- Sección principal -----------*/
+/* ----------- Sección CTA -----------*/
+
+.cta, .benefits {
+  display: block;
+  width: 100%;
+  max-width: 93rem;
+  height: auto;
+  margin: 0.4rem auto 1.2rem;
+}
 
 /* ----------- Subtítulo de hero ----------- */
 
 .hero__subtitle {
-  height: 7rem;
-  padding: auto;
+  height: auto;
+  padding: 2rem 1rem;
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
   height: auto;
 } 
 
-.hero__subtitle h2 {
+.hero__subtitle h1 {
   padding: 1rem 1rem 1rem;
   display: flex;
   flex-direction: column;
@@ -162,8 +177,11 @@ header {
 }
  .hero__subtitle-image img {
   width: 100%;
+  max-width: 33.2rem;
+  height: auto;
   border-radius: 1.74rem;
   object-fit: cover;
+
  }
 
 
@@ -174,7 +192,7 @@ header {
   flex-direction: column;
   margin: auto;
   width: 95%;
-  height: 10rem;
+  height: auto;
   padding: 0.8rem;
   border-radius: 0.88rem;
   align-items: center;
@@ -227,6 +245,63 @@ header {
   color: white;
   background-color: var(--shoppingColor);
   border: none;
+}
+
+
+/* --------------- Sección de beneficios --------------- */
+
+.benefits {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  height: auto;
+  max-width: 93rem;
+}
+
+/* --------------- Benefits title --------------- */
+.benefits__title {
+  width: 90%;
+  margin: 0 auto 1.2rem;
+  font-size: var(--fontMedium);
+  font-weight: 600;
+  color: var(--shoppingColor);
+  text-align: center;
+}
+
+.benefits__cards {
+  display: flex;
+  margin: auto;
+  width: 90%;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+.benefits__cards-card {
+  width: 8.6rem;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 1.6rem;
+  border: 0.05rem solid black;
+  gap: 0.5rem;
+}
+
+.benefits__cards-card img {
+  object-fit: cover;
+  width: 4.4rem;
+  align-self: center;
+}
+
+.benefits__cards-card h3 {
+  font-weight: 600;
+}
+
+.benefits__cards-card p {
+  font-weight: 500;
+  line-height: 1rem;
+  font-size: 0.75rem;
 }
 
 @media (min-width: 930px){
